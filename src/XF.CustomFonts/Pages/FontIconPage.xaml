@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:consts="clr-namespace:XF.CustomFonts.Constants"
+    x:Class="XF.CustomFonts.Pages.FontIconPage">
+    
+    <StackLayout
+        Spacing="8"
+        Padding="10"
+        Orientation="Vertical">
+
+        <Label
+            Text="x:Static"
+            FontSize="Small"
+            VerticalTextAlignment="Center"/>
+        <StackLayout
+            Orientation="Horizontal">
+            <Label
+                FontFamily="MaterialDesignIcons"
+                Style="{StaticResource LabelFontIconStyle}"
+                Text="{x:Static consts:FontIcons.Xamarin}"/>
+            <Label
+                FontFamily="MaterialDesignIcons"
+                Style="{StaticResource LabelFontIconStyle}"
+                Text="{x:Static consts:FontIcons.Microsoft}"/>
+            <Label
+                FontFamily="MaterialDesignIcons"
+                Style="{StaticResource LabelFontIconStyle}"
+                Text="{x:Static consts:FontIcons.Github}"/>
+        </StackLayout>
+
+        <Label
+            Text="Binding"
+            FontSize="Small"
+            VerticalTextAlignment="Center"/>
+        <StackLayout
+            Orientation="Horizontal">
+            <Button
+                FontFamily="MaterialDesignIcons"
+                Style="{StaticResource ButtonFontIconStyle}"
+                Text="{Binding AndroidIcon}"/>
+            <Button
+                FontFamily="MaterialDesignIcons"
+                Style="{StaticResource ButtonFontIconStyle}"
+                Text="{Binding AppleIcon}"/>
+            <Button
+                FontFamily="MaterialDesignIcons"
+                Style="{StaticResource ButtonFontIconStyle}"
+                Text="{Binding TwitchIcon}"/>
+        </StackLayout>
+
+        <Label
+            Text="FontImageSource"
+            FontSize="Small"
+            VerticalTextAlignment="Center"/>
+
+        <FlexLayout
+            Wrap="Wrap"
+            Direction="Row"
+            FlexLayout.Grow="1"
+            JustifyContent="SpaceBetween"
+            BindableLayout.ItemsSource="{Binding Icons, Mode=OneTime}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout x:DataType="x:String" Spacing="0">
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialDesignIcons"
+                                    Glyph="{Binding .}"
+                                    Size="32"
+                                    Color="Purple"/>
+                            </Image.Source>
+                        </Image>
+                    </StackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+
+    </StackLayout>
+</ContentPage>
